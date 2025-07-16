@@ -16,6 +16,12 @@
     backdrop-filter: blur(15px);
     position: relative;
     overflow: hidden;
+
+    h3 {
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
 }
 
 .feature-card::before {
@@ -30,14 +36,14 @@
     transition: transform 0.3s ease;
 }
 
-.feature-card:hover::before {
-    transform: scaleX(1);
-}
-
 .feature-card:hover {
     /* transform: translateY(-5px); */
     border-color: rgba(244, 162, 97, 0.3);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+    &::before {
+        transform: scaleX(1);
+    }
 }
 
 .feature-icon {
@@ -51,10 +57,4 @@
     justify-content: center;
     font-size: 2rem;
     box-shadow: 0 4px 20px rgba(251, 113, 133, 0.3);
-}
-
-.feature-card h3 {
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
 }
