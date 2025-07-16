@@ -1,0 +1,131 @@
+
+/* Footer - AMÉLIORÉ */
+footer {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-gradient));
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-section ul a:hover {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.footer-section .social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+
+.footer-description {
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(71, 85, 105, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.social-link:hover {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-gradient));
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* Icônes sociales spécifiques */
+.social-link.facebook:hover {
+    background: #1877f2;
+}
+
+.social-link.twitter:hover {
+    background: #1da1f2;
+}
+
+.social-link.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-link.youtube:hover {
+    background: #ff0000;
+}
+
+.social-link.discord:hover {
+    background: #5865f2;
+}
+
+.social-link.tiktok:hover {
+    background: #000000;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    color: #64748b;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-bottom a {
+    color: #94a3b8;
+}
