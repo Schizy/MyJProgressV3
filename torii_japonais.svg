@@ -1,0 +1,138 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Définition des dégradés pour le réalisme -->
+  <defs>
+    <!-- Dégradé pour le bois vermillon -->
+    <linearGradient id="woodGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B2635;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#CC4125;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#E74C3C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B2635;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Dégradé pour les ombres -->
+    <linearGradient id="shadowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5D1A1A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7A2222;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5D1A1A;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Dégradé pour le ciel -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B0E0E6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Filtre pour les ombres portées -->
+    <filter id="dropshadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="3" dy="5" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Texture du bois -->
+    <pattern id="woodTexture" patternUnits="userSpaceOnUse" width="20" height="4">
+      <rect width="20" height="4" fill="url(#woodGradient)"/>
+      <line x1="0" y1="1" x2="20" y2="1" stroke="#A0522D" stroke-width="0.5" opacity="0.3"/>
+      <line x1="0" y1="3" x2="20" y2="3" stroke="#8B4513" stroke-width="0.3" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+
+  
+  <!-- Pilier gauche -->
+  <g filter="url(#dropshadow)">
+    <!-- Corps du pilier -->
+    <rect x="180" y="200" width="35" height="300" fill="url(#woodTexture)" stroke="#5D1A1A" stroke-width="1"/>
+    
+    <!-- Détails du pilier - rainures -->
+    <rect x="182" y="210" width="31" height="5" fill="url(#shadowGradient)" opacity="0.4"/>
+    <rect x="182" y="480" width="31" height="5" fill="url(#shadowGradient)" opacity="0.4"/>
+    
+    <!-- Base du pilier -->
+    <rect x="175" y="490" width="45" height="20" fill="url(#shadowGradient)"/>
+    <rect x="170" y="505" width="55" height="15" fill="#3D1A1A"/>
+  </g>
+  
+  <!-- Pilier droit -->
+  <g filter="url(#dropshadow)">
+    <!-- Corps du pilier -->
+    <rect x="585" y="200" width="35" height="300" fill="url(#woodTexture)" stroke="#5D1A1A" stroke-width="1"/>
+    
+    <!-- Détails du pilier - rainures -->
+    <rect x="587" y="210" width="31" height="5" fill="url(#shadowGradient)" opacity="0.4"/>
+    <rect x="587" y="480" width="31" height="5" fill="url(#shadowGradient)" opacity="0.4"/>
+    
+    <!-- Base du pilier -->
+    <rect x="580" y="490" width="45" height="20" fill="url(#shadowGradient)"/>
+    <rect x="575" y="505" width="55" height="15" fill="#3D1A1A"/>
+  </g>
+  
+  <!-- Poutre horizontale supérieure (Kasagi) -->
+  <g filter="url(#dropshadow)">
+    <!-- Corps principal -->
+    <rect x="120" y="180" width="560" height="30" fill="url(#woodTexture)" stroke="#5D1A1A" stroke-width="1"/>
+    
+    <!-- Extrémités courbées -->
+    <ellipse cx="135" cy="195" rx="20" ry="15" fill="url(#woodGradient)"/>
+    <ellipse cx="665" cy="195" rx="20" ry="15" fill="url(#woodGradient)"/>
+    
+    <!-- Détails sculpturaux -->
+    <rect x="125" y="185" width="550" height="4" fill="url(#shadowGradient)" opacity="0.5"/>
+    <rect x="125" y="201" width="550" height="4" fill="url(#shadowGradient)" opacity="0.5"/>
+  </g>
+  
+  <!-- Poutre horizontale inférieure (Nuki) -->
+  <g filter="url(#dropshadow)">
+    <!-- Corps principal -->
+    <rect x="160" y="320" width="480" height="25" fill="url(#woodTexture)" stroke="#5D1A1A" stroke-width="1"/>
+    
+    <!-- Extrémités légèrement courbées -->
+    <ellipse cx="172" cy="332.5" rx="15" ry="12.5" fill="url(#woodGradient)"/>
+    <ellipse cx="628" cy="332.5" rx="15" ry="12.5" fill="url(#woodGradient)"/>
+    
+    <!-- Détails sculpturaux -->
+    <rect x="165" y="325" width="470" height="3" fill="url(#shadowGradient)" opacity="0.5"/>
+    <rect x="165" y="337" width="470" height="3" fill="url(#shadowGradient)" opacity="0.5"/>
+  </g>
+  
+  <!-- Assemblages/joints traditionnels -->
+  <!-- Joint gauche haut -->
+  <rect x="175" y="185" width="25" height="20" fill="url(#shadowGradient)" opacity="0.7"/>
+  <rect x="178" y="188" width="19" height="14" fill="#2D0F0F"/>
+  
+  <!-- Joint droit haut -->
+  <rect x="600" y="185" width="25" height="20" fill="url(#shadowGradient)" opacity="0.7"/>
+  <rect x="603" y="188" width="19" height="14" fill="#2D0F0F"/>
+  
+  <!-- Joint gauche bas -->
+  <rect x="175" y="325" width="25" height="15" fill="url(#shadowGradient)" opacity="0.7"/>
+  <rect x="178" y="328" width="19" height="9" fill="#2D0F0F"/>
+  
+  <!-- Joint droit bas -->
+  <rect x="600" y="325" width="25" height="15" fill="url(#shadowGradient)" opacity="0.7"/>
+  <rect x="603" y="328" width="19" height="9" fill="#2D0F0F"/>
+  
+  <!-- Détails de texture sur les poutres -->
+  <g opacity="0.3">
+    <!-- Lignes de bois sur poutre supérieure -->
+    <line x1="130" y1="190" x2="670" y2="190" stroke="#8B4513" stroke-width="1"/>
+    <line x1="130" y1="200" x2="670" y2="200" stroke="#8B4513" stroke-width="1"/>
+    
+    <!-- Lignes de bois sur poutre inférieure -->
+    <line x1="170" y1="328" x2="630" y2="328" stroke="#8B4513" stroke-width="1"/>
+    <line x1="170" y1="337" x2="630" y2="337" stroke="#8B4513" stroke-width="1"/>
+  </g>
+  
+  <!-- Reflets de lumière pour le réalisme -->
+  <g opacity="0.2">
+    <!-- Reflet sur poutre supérieure -->
+    <rect x="130" y="182" width="540" height="2" fill="#FFB6C1"/>
+    
+    <!-- Reflet sur poutre inférieure -->
+    <rect x="170" y="322" width="460" height="2" fill="#FFB6C1"/>
+    
+    <!-- Reflets sur piliers -->
+    <rect x="185" y="205" width="3" height="280" fill="#FFB6C1"/>
+    <rect x="590" y="205" width="3" height="280" fill="#FFB6C1"/>
+  </g>
+  
+
+</svg>

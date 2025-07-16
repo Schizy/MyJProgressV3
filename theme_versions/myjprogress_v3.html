@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyJProgress - Apprendre le japonais</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #F4A261;
+            --accent-color-gradient: #E85A4F;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --info-color: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 35%, #334155 70%, #475569 100%);
+            min-height: 100vh;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--primary-color);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-gradient));
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: rgba(30, 41, 59, 0.4);
+            border-radius: 20px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #f1f5f9 0%, var(--accent-color) 50%, var(--accent-color-gradient) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-gradient) 100%);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(251, 113, 133, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(251, 113, 133, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            background: rgba(30, 41, 59, 0.4);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-gradient));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            border-color: rgba(244, 162, 97, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-gradient) 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(251, 113, 133, 0.3);
+        }
+
+        .feature-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Progress Section - AMÉLIORÉE */
+        .progress-section {
+            background: rgba(30, 41, 59, 0.4);
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 3rem 0;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(244, 162, 97, 0.03) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .progress-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-gradient));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-color-gradient));
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-color-gradient));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Progress Bars */
+        .progress-bars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-bar-container {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .progress-bar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar-title {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .progress-bar-percentage {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(71, 85, 105, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-gradient));
+            border-radius: 10px;
+            transition: width 2s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Achievements Section */
+        .achievements {
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .achievements-title {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .achievements-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .achievement-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-color-gradient));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(244, 162, 97, 0.3);
+        }
+
+        .achievement-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.5);
+        }
+
+        .achievement-badge.locked {
+            background: rgba(71, 85, 105, 0.5);
+            color: #64748b;
+            box-shadow: none;
+        }
+
+        /* Footer - AMÉLIORÉ */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-gradient));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .footer-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(71, 85, 105, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-color-gradient));
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            color: #64748b;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        /* Animated Background Elements */
+        .bg-element {
+            position: absolute;
+            background: radial-gradient(circle, rgba(251, 113, 133, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-element:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bg-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .bg-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-bars {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background Elements -->
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">MyJProgress</div>
+                <nav>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#cours">Cours</a></li>
+                        <li><a href="#progres">Progrès</a></li>
+                        <li><a href="#communaute">Communauté</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>MyJProgress</h1>
+                <p>Votre voyage vers la maîtrise du japonais commence ici</p>
+                <button class="cta-button">Commencer maintenant</button>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">漢</div>
+                    <h3>Kanji Interactifs</h3>
+                    <p>Apprenez les caractères japonais avec des exercices interactifs et des mnémotechniques efficaces.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">話</div>
+                    <h3>Conversation</h3>
+                    <p>Pratiquez la conversation avec des dialogues réalistes et des simulations de situations quotidiennes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">文</div>
+                    <h3>Grammaire</h3>
+                    <p>Maîtrisez la grammaire japonaise avec des leçons structurées et des exercices progressifs.</p>
+                </div>
+            </section>
+
+            <section class="progress-section">
+                <h2 class="progress-title">Suivez vos progrès</h2>
+                <p class="progress-subtitle">Visualisez votre parcours d'apprentissage et célébrez vos réussites</p>
+                
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">漢</div>
+                        <div class="stat-number">1,247</div>
+                        <div class="stat-label">Kanji maîtrisés</div>
+                        <div class="stat-description">Sur 2,136 kanji du JLPT</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-number">N3</div>
+                        <div class="stat-label">Niveau actuel</div>
+                        <div class="stat-description">85% vers le niveau N2</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">Jours consécutifs</div>
+                        <div class="stat-description">Votre plus longue série</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-number">2,156</div>
+                        <div class="stat-label">Points XP</div>
+                        <div class="stat-description">Cette semaine: +340 XP</div>
+                    </div>
+                </div>
+
+                <div class="progress-bars">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-header">
+                            <span class="progress-bar-title">Vocabulaire</span>
+                            <span class="progress-bar-percentage">78%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 78%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-header">
+                            <span class="progress-bar-title">Grammaire</span>
+                            <span class="progress-bar-percentage">65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-header">
+                            <span class="progress-bar-title">Conversation</span>
+                            <span class="progress-bar-percentage">52%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 52%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-header">
+                            <span class="progress-bar-title">Écriture</span>
+                            <span class="progress-bar-percentage">71%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 71%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements">
+                    <h3 class="achievements-title">Vos récompenses</h3>
+                    <div class="achievements-grid">
+                        <div class="achievement-badge">🥇</div>
+                        <div class="achievement-badge">🎌</div>
+                        <div class="achievement-badge">📚</div>
+                        <div class="achievement-badge">💬</div>
+                        <div class="achievement-badge">🎯</div>
+                        <div class="achievement-badge locked">🏆</div>
+                        <div class="achievement-badge locked">🌟</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MyJProgress</h3>
+                    <p class="footer-description">
+                        Votre plateforme d'apprentissage du japonais. Apprenez à votre rythme avec des méthodes modernes et efficaces.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🎥</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Apprentissage</h3>
+                    <ul>
+                        <li><a href="#">Cours débutant</a></li>
+                        <li><a href="#">Cours intermédiaire</a></li>
+                        <li><a href="#">Cours avancé</a></li>
+                        <li><a href="#">Tests JLPT</a></li>
+                        <li><a href="#">Dictionnaire</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Communauté</h3>
+                    <ul>
+                        <li><a href="#">Forum</a></li>
+                        <li><a href="#">Groupes d'étude</a></li>
+                        <li><a href="#">Échanges linguistiques</a></li>
+                        <li><a href="#">Événements</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MyJProgress. Tous droits réservés. | <a href="#" style="color: #94a3b8;">Politique de confidentialité</a> | <a href="#" style="color: #94a3b8;">Conditions d'utilisation</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au scroll
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.feature-card, .stat-item, .progress-bar-container');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialisation des éléments
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.feature-card, .stat-item, .progress-bar-container');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+
+            // Animation des barres de progression
+            setTimeout(() => {
+                const progressBars = document.querySelectorAll('.progress-fill');
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }, 500);
+        });
+
+        // Effet de clic sur le bouton
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 100);
+        });
+
+        // Effet hover sur les badges d'achievement
+        document.querySelectorAll('.achievement-badge').forEach(badge => {
+            badge.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('locked')) {
+                    this.style.transform = 'scale(1.1) rotate(5deg)';
+                }
+            });
+            
+            badge.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+</body>
+
+</html>
