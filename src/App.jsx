@@ -3,9 +3,6 @@ import Header from "./components/Header/Header"
 import Main from "./components/Main/Main"
 
 function App() {
-
-  console.log('REACT')
-
   return (
     <>
       <Header />
