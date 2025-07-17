@@ -32,7 +32,7 @@ body {
     padding: 0 20px;
 }
 
-/* Responsive Design */
+/* Mobile */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
@@ -40,12 +40,19 @@ body {
 
     .header-content {
         flex-direction: column;
-        gap: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section {
+        width: 66vw;
+    }
+
+    .social-links {
+        justify-content: center;
     }
 
     nav ul {
-        flex-direction: column;
-        gap: 1rem;
+        gap: min(1rem, 1vw);
     }
 
     .features {

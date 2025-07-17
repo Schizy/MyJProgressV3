@@ -30,14 +30,14 @@ header {
 
     display: flex;
     align-items: center;
-}
 
-.logo img {
-    width: 80px;
-}
+    &:hover {
+        transform: scale(1.05);
+    }
 
-.logo:hover {
-    transform: scale(1.05);
+    img {
+        width: 80px;
+    }
 }
 
 nav ul {
@@ -52,10 +52,14 @@ nav a {
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
-}
 
-nav a:hover {
-    color: var(--accent-color);
+    &:hover {
+        color: var(--accent-color);
+
+        &::after {
+            width: 100%;
+        }
+    }
 }
 
 nav a::after {
@@ -67,8 +71,4 @@ nav a::after {
     height: 2px;
     background: linear-gradient(90deg, var(--accent-color), var(--accent-color-gradient));
     transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-    width: 100%;
 }
