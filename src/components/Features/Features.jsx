@@ -1,4 +1,4 @@
-import FeatureCard from '../../FeatureCard/FeatureCard';
+import FeatureCard from '../FeatureCard/FeatureCard';
 import './Features.css';
 
 const Features = () => {

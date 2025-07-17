@@ -21,27 +21,3 @@
     gap: 2rem;
     text-align: center;
 }
-
-.stat-item {
-    background: var(--primary-color);
-    /*0.6)*/
-    padding: 1.5rem;
-    border-radius: 10px;
-    border-left: 4px solid;
-    border-image: linear-gradient(135deg, var(--accent-color), var(--accent-color-gradient)) 1;
-    backdrop-filter: blur(10px);
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: bold;
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-gradient));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.stat-label {
-    color: #cbd5e1;
-    margin-top: 0.5rem;
-}
