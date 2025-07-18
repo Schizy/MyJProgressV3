@@ -10,7 +10,6 @@ class FeatureCardProvider implements ProviderInterface
 {
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): object|array|null
     {
-
         return [
             new FeatureCard(
                 icon: '漢',
