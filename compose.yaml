@@ -1,0 +1,15 @@
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myjprogress
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
+volumes:
+  db_data: null
