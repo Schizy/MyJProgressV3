@@ -12,7 +12,7 @@ const Progress = () => {
     ])
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/progress_cards')
+        fetch('http://localhost:8000/api/progress_cards')
             .then(response => response.json())
             .then(data => setProgressCards(data))
             .catch(error => console.error('Error fetching progress cards:', error));

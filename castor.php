@@ -17,6 +17,20 @@ function hello(): void
     io()->title(sprintf('Hello %s!', $currentUser));
 }
 
+#[AsTask(description:'php -S localhost:8000 -t back/public')]
+function api()
+{
+    io()->title('PHP Server starting...');
+    run('php -S localhost:8000 -t back/public');
+}
+
+#[AsTask(description:'npm run dev (vite)')]
+function dev()
+{
+    io()->title('Vite Server starting...');
+    run('npm run dev');
+}
+
 #[AsTask(description: 'docker compose up -d', aliases: ['u', 'up'], namespace:'docker')]
 function up()
 {

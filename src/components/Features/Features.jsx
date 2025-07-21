@@ -11,7 +11,7 @@ const Features = () => {
     ]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/feature_cards')
+        fetch('http://localhost:8000/api/feature_cards')
             .then(response => response.json())
             .then(data => setFeatureCards(data))
             .catch(error => console.error('Error fetching feature cards:', error));
