@@ -1,9 +1,15 @@
 const API_URL = 'http://localhost:8000/api'
 
+async function fetchJson(path) {
+    const response = await fetch(API_URL + path)
+
+    return await response.json()
+}
+
 export const getProgressCards = async () => {
-    return fetch(`${API_URL}/progress_cards`).then(response => response.json())
+    return fetchJson('/progress_cards')
 }
 
 export const getFeatureCards = async () => {
-    return fetch(`${API_URL}/feature_cards`).then(response => response.json())
+    return fetchJson('/feature_cards')
 }
