@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import FeatureCard from '../FeatureCard/FeatureCard';
 import './Features.css';
+import { getFeatureCards } from '../../hooks/api';
 
 const Features = () => {
 
@@ -11,8 +12,7 @@ const Features = () => {
     ]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/feature_cards')
-            .then(response => response.json())
+        getFeatureCards()
             .then(data => setFeatureCards(data))
             .catch(error => console.error('Error fetching feature cards:', error));
     }, []);

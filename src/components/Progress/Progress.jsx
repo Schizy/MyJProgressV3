@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ProgressCard from '../ProgressCard/ProgressCard';
 import './Progress.css';
+import { getProgressCards } from '../../hooks/api';
 
 const Progress = () => {
 
@@ -12,10 +13,9 @@ const Progress = () => {
     ])
 
     useEffect(() => {
-        fetch('http://localhost:8000/api/progress_cards')
-            .then(response => response.json())
+        getProgressCards()
             .then(data => setProgressCards(data))
-            .catch(error => console.error('Error fetching progress cards:', error));
+            .catch(error => console.error('Error fetching progress cards:', error))
     }, []);
 
     return (
