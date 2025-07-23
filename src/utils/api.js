@@ -1,10 +1,9 @@
 import { getItemWithTTL, setItemWithTTL } from "./localStorage"
+import { API_CONFIG } from "../config/api.config"
 
-const API_URL = import.meta.env.VITE_API_URL
-const TTL = import.meta.env.VITE_API_TTL_MINUTES * 60 * 1000
+const { API_URL, TTL, ENDPOINTS } = API_CONFIG
 
 async function apiCall(path) {
-
     const cachedResponse = getItemWithTTL(path)
 
     // Cache hit
@@ -22,9 +21,9 @@ async function apiCall(path) {
 }
 
 export const getProgressCards = async () => {
-    return apiCall('/progress_cards')
+    return apiCall(ENDPOINTS.PROGRESS_CARDS)
 }
 
 export const getFeatureCards = async () => {
-    return apiCall('/feature_cards')
+    return apiCall(ENDPOINTS.FEATURE_CARDS)
 }
