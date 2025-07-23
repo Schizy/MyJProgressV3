@@ -1,7 +1,7 @@
 import { getItemWithTTL, setItemWithTTL } from "./localStorage"
 
-const API_URL = 'http://localhost:8000/api'
-const TTL = 5 * 60 * 1000 // 5min
+const API_URL = import.meta.env.VITE_API_URL
+const TTL = import.meta.env.VITE_API_TTL_MINUTES * 60 * 1000
 
 async function apiCall(path) {
 
