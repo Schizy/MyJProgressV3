@@ -1,4 +1,6 @@
 const API_URL = 'http://localhost:8000/api'
+const TTL = 5 * 60 * 1000 // 5min
+
 
 // TODO: incorporer le cache ici
 // Au lieu d'utiliser le local storage state dans le component

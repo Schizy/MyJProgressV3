@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import ProgressCard from '../ProgressCard/ProgressCard';
 import './Progress.css';
-import { getProgressCards } from '../../hooks/api';
+import { getProgressCards } from '../../utils/api';
 
 const Progress = () => {
 

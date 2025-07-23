@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import FeatureCard from '../FeatureCard/FeatureCard';
 import './Features.css';
-import { getFeatureCards } from '../../hooks/api';
-import { useLocalStorageState } from '../../hooks/localStorage';
+import { getFeatureCards } from '../../utils/api';
+import useStoredState from '../../hooks/useStoredState';
 
 const Features = () => {
 
-    const [featureCards, setFeatureCards] = useLocalStorageState('featuresCards', [
+    const [featureCards, setFeatureCards] = useStoredState('featuresCards', [
         // {icon: '漢', title: 'Kanji Interactifs', description: 'Apprenez les caractères japonais avec des exercices interactifs et des mnémotechniques efficaces.'},
         // {icon: '話', title: 'Conversation', description: 'Pratiquez la conversation avec des dialogues réalistes et des simulations de situations quotidiennes.'},
         // {icon: '文', title: 'Grammaire', description: 'Maîtrisez la grammaire japonaise avec des leçons structurées et des exercices progressifs.'}
