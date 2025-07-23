@@ -1,3 +1,5 @@
+const TTL_suffix = '_ttl'
+
 
 export function getItem(key) {
     try {
@@ -15,4 +17,16 @@ export function setItem(key, value) {
     } catch (err) {
         console.error(err)
     }
+}
+
+export function getItemWithTTL(key) {
+    const item = getItem(key)
+    const ttl = getItem(key + TTL_suffix)
+
+    return item && ttl > Date.now() ? item : null
+}
+
+export function setItemWithTTL(key, value, ttl) {
+    setItem(key, value)
+    setItem(key + TTL_suffix, Date.now() + ttl)
 }

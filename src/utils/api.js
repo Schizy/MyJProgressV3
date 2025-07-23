@@ -1,15 +1,14 @@
-import { getItem, setItem } from "./localStorage"
+import { getItemWithTTL, setItemWithTTL } from "./localStorage"
 
 const API_URL = 'http://localhost:8000/api'
 const TTL = 5 * 60 * 1000 // 5min
 
 async function apiCall(path) {
 
-    const cachedResponse = getItem(path)
-    const cacheTTL = getItem(path + '_ttl')
+    const cachedResponse = getItemWithTTL(path)
 
     // Cache hit
-    if (cachedResponse && cacheTTL > Date.now()) {
+    if (cachedResponse) {
         return cachedResponse
     }
 
@@ -17,8 +16,7 @@ async function apiCall(path) {
     const response = await fetch(API_URL + path)
     const data = await response.json()
 
-    setItem(path, data)
-    setItem(path + '_ttl', Date.now() + TTL)
+    setItemWithTTL(path, data, TTL)
 
     return data
 }
