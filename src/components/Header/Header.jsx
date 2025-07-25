@@ -9,11 +9,12 @@ function Header() {
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="/">Accueil</a></li>
                         <li><a href="#cours">Cours</a></li>
                         <li><a href="#progres">Progrès</a></li>
-                        <li><a href="#communaute">Communauté</a></li>
+                        <li><a href="/communaute">Communauté</a></li>
                         <li><a href="#contact">Contact</a></li>
+                        <li><a href="/profile">Mon profil</a></li>
                     </ul>
                 </nav>
             </div>

@@ -5,15 +5,11 @@ import Progress from '../Progress/Progress';
 import './Main.css';
 
 function Main() {
-    return (
-        <main>
-            <div className="container">
-                <Hero />
-                <Features />
-                <Progress />
-            </div>
-        </main>
-    )
+    return <>
+        <Hero />
+        <Features />
+        <Progress />
+    </>
 }
 
 export default Main;
