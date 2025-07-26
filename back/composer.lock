@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8df157804414e7c24baf69903a7287f",
+    "content-hash": "f4c20952cf8b26eac3713b8cf63bdeff",
     "packages": [
         {
             "name": "api-platform/doctrine-common",
@@ -4951,142 +4951,6 @@
             "time": "2025-06-28T08:24:55+00:00"
         },
         {
-            "name": "symfony/mcp-bundle",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/mcp-bundle.git",
-                "reference": "4a9c196162aa43bfdbb0f891c7ccc90eabd000b0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mcp-bundle/zipball/4a9c196162aa43bfdbb0f891c7ccc90eabd000b0",
-                "reference": "4a9c196162aa43bfdbb0f891c7ccc90eabd000b0",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/config": "^6.4 || ^7.0",
-                "symfony/console": "^6.4 || ^7.0",
-                "symfony/dependency-injection": "^6.4 || ^7.0",
-                "symfony/framework-bundle": "^6.4 || ^7.0",
-                "symfony/http-foundation": "^6.4 || ^7.0",
-                "symfony/http-kernel": "^6.4 || ^7.0",
-                "symfony/mcp-sdk": "@dev",
-                "symfony/routing": "^6.4 || ^7.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "^11.5"
-            },
-            "default-branch": true,
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\AI\\McpBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christopher Hertel",
-                    "email": "mail@christopher-hertel.de"
-                }
-            ],
-            "description": "Symfony integration bundle for Model Context Protocol (via symfony/mcp-sdk)",
-            "support": {
-                "source": "https://github.com/symfony/mcp-bundle/tree/main"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2025-07-17T08:55:01+00:00"
-        },
-        {
-            "name": "symfony/mcp-sdk",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/mcp-sdk.git",
-                "reference": "481f3af08d8e4b87a8844b2ef43dee8a53a3d679"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mcp-sdk/zipball/481f3af08d8e4b87a8844b2ef43dee8a53a3d679",
-                "reference": "481f3af08d8e4b87a8844b2ef43dee8a53a3d679",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.2",
-                "psr/log": "^1.0 || ^2.0 || ^3.0",
-                "symfony/uid": "^6.4 || ^7.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "^11.5",
-                "psr/cache": "^3.0",
-                "rector/rector": "^2.0",
-                "symfony/console": "^6.4 || ^7.0"
-            },
-            "suggest": {
-                "psr/cache": "To use CachePoolStore with SSE Transport",
-                "symfony/console": "To use SymfonyConsoleTransport for STDIO"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\AI\\McpSdk\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christopher Hertel",
-                    "email": "mail@christopher-hertel.de"
-                },
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com"
-                }
-            ],
-            "description": "Model Context Protocol SDK for Client and Server applications in PHP",
-            "support": {
-                "source": "https://github.com/symfony/mcp-sdk/tree/main"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2025-07-23T17:59:12+00:00"
-        },
-        {
             "name": "symfony/monolog-bridge",
             "version": "v7.3.0",
             "source": {
@@ -8197,10 +8061,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "symfony/mcp-bundle": 20,
-        "symfony/mcp-sdk": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
