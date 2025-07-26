@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom"
 
 import Layout from "./Layout"
 import NotFoundPage from "./pages/NotFoundPage"
-import Main from "./components/Main/Main"
-import Profile from "./Profile"
+import HomePage from "./pages/HomePage"
+import ProfilePage from "./pages/ProfilePage"
 
 export const router = createBrowserRouter([
     {
@@ -11,9 +11,9 @@ export const router = createBrowserRouter([
         element: <Layout />,
         errorElement: <NotFoundPage />,
         children: [
-            { path: '/', element: <Main /> },
-            { path: '/profile', element: <Profile /> },
-            { path: '/profile/:id', element: <Profile /> }
+            { path: '/', element: <HomePage /> },
+            { path: '/profile', element: <ProfilePage /> },
+            { path: '/profile/:id', element: <ProfilePage /> }
         ]
     }
 ])

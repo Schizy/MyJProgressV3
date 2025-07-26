@@ -1,12 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import './Header.css'
+import torii from '../../assets/torii.svg'
 
 function Header() {
     return <header>
         <div className="container">
             <div className="header-content">
                 <div className="logo">
-                    <img src="torii_japonais.svg" alt="Torii" /> MyJProgress
+                    <img src={torii} alt="" /> MyJProgress
                 </div>
                 <nav>
                     <ul>
