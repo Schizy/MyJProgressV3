@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './Header.css'
 
 function Header() {
@@ -9,12 +10,12 @@ function Header() {
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="/">Accueil</a></li>
+                        <li><NavLink to="/">Accueil</NavLink></li>
                         <li><a href="#cours">Cours</a></li>
                         <li><a href="#progres">Progrès</a></li>
-                        <li><a href="/communaute">Communauté</a></li>
+                        <li><NavLink to="/communaute">Communauté</NavLink></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="/profile">Mon profil</a></li>
+                        <li><NavLink to="/profile">Mon profil</NavLink></li>
                     </ul>
                 </nav>
             </div>
@@ -22,4 +23,4 @@ function Header() {
     </header>
 }
 
-export default Header;
+export default Header
