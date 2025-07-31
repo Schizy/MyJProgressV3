@@ -27,3 +27,7 @@ export const getProgressCards = async () => {
 export const getFeatureCards = async () => {
     return apiCall(ENDPOINTS.FEATURE_CARDS)
 }
+
+export const login = async (pseudo, password) => {
+    return apiCall(ENDPOINTS.FEATURE_CARDS)
+}
