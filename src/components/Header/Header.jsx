@@ -17,6 +17,7 @@ function Header() {
                         <li><NavLink to="/communaute">Communauté</NavLink></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><NavLink to="/profile">Mon profil</NavLink></li>
+                        <li><NavLink to="/login">Se connecter</NavLink></li>
                     </ul>
                 </nav>
             </div>

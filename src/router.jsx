@@ -4,6 +4,7 @@ import Layout from "./Layout"
 import NotFoundPage from "./pages/NotFoundPage"
 import HomePage from "./pages/HomePage"
 import ProfilePage from "./pages/ProfilePage"
+import LoginPage from "./pages/LoginPage"
 
 export const router = createBrowserRouter([
     {
@@ -12,6 +13,7 @@ export const router = createBrowserRouter([
         errorElement: <NotFoundPage />,
         children: [
             { path: '/', element: <HomePage /> },
+            { path: '/login', element: <LoginPage /> },
             { path: '/profile', element: <ProfilePage /> },
             { path: '/profile/:id', element: <ProfilePage /> }
         ]
